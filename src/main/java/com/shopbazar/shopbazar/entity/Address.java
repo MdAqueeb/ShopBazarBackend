@@ -23,6 +23,12 @@ public class Address {
     @EqualsAndHashCode.Exclude
     private User user;
 
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "phone", nullable = false)
+    private String phone;
+
     @Column(name = "street", nullable = false)
     private String street;
 
@@ -37,6 +43,9 @@ public class Address {
 
     @Column(name = "country", nullable = false)
     private String country;
+
+    @Column(name = "is_default")
+    private Boolean isDefault;
 
     @OneToMany(mappedBy = "address", fetch = FetchType.LAZY)
     @ToString.Exclude

@@ -1,17 +1,50 @@
 package com.shopbazar.shopbazar.service;
 
+import com.shopbazar.shopbazar.dto.OrderItemResponse;
 import com.shopbazar.shopbazar.entity.OrderItem;
+import com.shopbazar.shopbazar.exception.ResourceNotFoundException;
 import com.shopbazar.shopbazar.repository.OrderItemRepository;
+import com.shopbazar.shopbazar.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class OrderItemService {
 
     private final OrderItemRepository orderItemRepository;
+    private final OrderRepository orderRepository;
+
+    public List<OrderItemResponse> getOrderItemsByOrderId(Long orderId) {
+        if (!orderRepository.existsById(orderId)) {
+            throw new ResourceNotFoundException("Order not found with id: " + orderId);
+        }
+        return orderItemRepository.findByOrder_OrderId(orderId).stream()
+                .map(this::mapToResponse)
+                .collect(Collectors.toList());
+    }
+
+    public OrderItemResponse getOrderItemByOrderIdAndId(Long orderId, Long orderItemId) {
+        if (!orderRepository.existsById(orderId)) {
+            throw new ResourceNotFoundException("Order not found with id: " + orderId);
+        }
+        OrderItem orderItem = orderItemRepository.findByOrder_OrderIdAndOrderItemId(orderId, orderItemId)
+                .orElseThrow(() -> new ResourceNotFoundException("OrderItem not found with id: " + orderItemId + " for order: " + orderId));
+        return mapToResponse(orderItem);
+    }
+
+    private OrderItemResponse mapToResponse(OrderItem item) {
+        return OrderItemResponse.builder()
+                .orderItemId(item.getOrderItemId())
+                .productId(item.getProduct().getProductId())
+                .productName(item.getProduct().getName())
+                .quantity(item.getQuantity())
+                .price(item.getPrice())
+                .build();
+    }
 
     public OrderItem createOrderItem(OrderItem orderItem) {
         return orderItemRepository.save(orderItem);

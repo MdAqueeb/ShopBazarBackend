@@ -27,8 +27,14 @@ public class Seller {
     @EqualsAndHashCode.Exclude
     private User user;
 
-    @Column(name = "business_name", nullable = false)
-    private String businessName;
+    @Column(name = "store_name", nullable = false)
+    private String storeName;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "gst_number")
+    private String gstNumber;
 
     @Column(name = "email", nullable = false)
     private String email;

@@ -3,6 +3,9 @@ package com.shopbazar.shopbazar.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.shopbazar.shopbazar.entity.Order.OrderBuilder;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -26,6 +29,9 @@ public class OrderStatusHistory {
 
     @Column(name = "status", nullable = false)
     private String status;
+
+    @Column(name = "comment")
+    private String comment;
 
     @CreationTimestamp
     @Column(name = "timestamp", updatable = false)

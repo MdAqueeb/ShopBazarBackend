@@ -21,6 +21,10 @@ public class TransactionService {
         return transactionRepository.findById(transactionId);
     }
 
+    public List<Transaction> getTransactionsByOrderId(Long orderId) {
+        return transactionRepository.findByOrder_OrderId(orderId);
+    }
+
     public List<Transaction> getAllTransactions() {
         return transactionRepository.findAll();
     }

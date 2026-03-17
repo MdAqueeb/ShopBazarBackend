@@ -1,39 +1,121 @@
 package com.shopbazar.shopbazar.service;
 
-import com.shopbazar.shopbazar.entity.Cart;
-import com.shopbazar.shopbazar.repository.CartRepository;
+import com.shopbazar.shopbazar.dto.CartItemRequest;
+import com.shopbazar.shopbazar.entity.*;
+import com.shopbazar.shopbazar.exception.BadRequestException;
+import com.shopbazar.shopbazar.exception.ConflictException;
+import com.shopbazar.shopbazar.exception.ForbiddenException;
+import com.shopbazar.shopbazar.exception.ResourceNotFoundException;
+import com.shopbazar.shopbazar.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import java.util.List;
-import java.util.Optional;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
 
 @Service
 @RequiredArgsConstructor
 public class CartService {
 
     private final CartRepository cartRepository;
+    private final CartItemRepository cartItemRepository;
+    private final ProductRepository productRepository;
+    private final UserRepository userRepository;
+    private final InventoryRepository inventoryRepository;
 
-    public Cart createCart(Cart cart) {
-        return cartRepository.save(cart);
+    @Transactional
+    public CartItem addItemToCart(Long userId, CartItemRequest request) {
+        Cart cart = getOrCreateCart(userId);
+        
+        Product product = productRepository.findById(request.getProductId())
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + request.getProductId()));
+
+        // Check stock availability
+        Inventory inventory = inventoryRepository.findByProduct_ProductId(product.getProductId())
+                .orElseThrow(() -> new ResourceNotFoundException("Inventory not found for product: " + product.getName()));
+
+        int availableStock = inventory.getStockQuantity() - inventory.getReservedQuantity();
+        if (availableStock < request.getQuantity()) {
+            throw new ConflictException("Insufficient stock. Only " + availableStock + " units available.");
+        }
+
+        // Check if item already exists in cart
+        return cartItemRepository.findByCart_CartIdAndProduct_ProductId(cart.getCartId(), product.getProductId())
+                .map(existingItem -> {
+                    existingItem.setQuantity(existingItem.getQuantity() + request.getQuantity());
+                    return cartItemRepository.save(existingItem);
+                })
+                .orElseGet(() -> {
+                    CartItem newItem = CartItem.builder()
+                            .cart(cart)
+                            .product(product)
+                            .quantity(request.getQuantity())
+                            .build();
+                    return cartItemRepository.save(newItem);
+                });
     }
 
-    public Optional<Cart> getCartById(Long cartId) {
-        return cartRepository.findById(cartId);
+    @Transactional(readOnly = true)
+    public Cart getCartByUserId(Long userId) {
+        return cartRepository.findByUser_UserId(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("Cart not found for user id: " + userId));
     }
 
-    public List<Cart> getAllCarts() {
-        return cartRepository.findAll();
+    @Transactional
+    public CartItem updateCartItemQuantity(Long userId, Long cartItemId, Integer quantity) {
+        CartItem cartItem = cartItemRepository.findById(cartItemId)
+                .orElseThrow(() -> new ResourceNotFoundException("Cart item not found with id: " + cartItemId));
+
+        if (!cartItem.getCart().getUser().getUserId().equals(userId)) {
+            throw new ForbiddenException("You do not have permission to update this cart item.");
+        }
+
+        if (quantity <= 0) {
+            throw new BadRequestException("Quantity must be greater than zero.");
+        }
+
+        // Check stock availability
+        Inventory inventory = inventoryRepository.findByProduct_ProductId(cartItem.getProduct().getProductId())
+                .orElseThrow(() -> new ResourceNotFoundException("Inventory not found for product: " + cartItem.getProduct().getName()));
+
+        int availableStock = inventory.getStockQuantity() - inventory.getReservedQuantity();
+        if (availableStock < quantity) {
+            throw new ConflictException("Insufficient stock. Only " + availableStock + " units available.");
+        }
+
+        cartItem.setQuantity(quantity);
+        return cartItemRepository.save(cartItem);
     }
 
-    public Cart updateCart(Long cartId, Cart cart) {
-        Cart existing = cartRepository.findById(cartId)
-                .orElseThrow(() -> new RuntimeException("Cart not found with id: " + cartId));
-        existing.setUser(cart.getUser());
-        existing.setCartItems(cart.getCartItems());
-        return cartRepository.save(existing);
+    @Transactional
+    public void removeCartItem(Long userId, Long cartItemId) {
+        CartItem cartItem = cartItemRepository.findById(cartItemId)
+                .orElseThrow(() -> new ResourceNotFoundException("Cart item not found with id: " + cartItemId));
+
+        if (!cartItem.getCart().getUser().getUserId().equals(userId)) {
+            throw new ForbiddenException("You do not have permission to remove this cart item.");
+        }
+
+        cartItemRepository.delete(cartItem);
     }
 
-    public void deleteCart(Long cartId) {
-        cartRepository.deleteById(cartId);
+    @Transactional
+    public void clearCart(Long userId) {
+        Cart cart = getCartByUserId(userId);
+        cart.getCartItems().clear();
+        cartRepository.save(cart);
+    }
+
+    private Cart getOrCreateCart(Long userId) {
+        return cartRepository.findByUser_UserId(userId)
+                .orElseGet(() -> {
+                    User user = userRepository.findById(userId)
+                            .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
+                    Cart newCart = Cart.builder()
+                            .user(user)
+                            .cartItems(new ArrayList<>())
+                            .build();
+                    return cartRepository.save(newCart);
+                });
     }
 }
