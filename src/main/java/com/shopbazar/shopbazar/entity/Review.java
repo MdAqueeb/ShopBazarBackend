@@ -30,6 +30,9 @@ public class Review {
     @EqualsAndHashCode.Exclude
     private User user;
 
+    @Column(name = "rating", nullable = false)
+    private Integer rating;
+
     @Column(name = "comment", columnDefinition = "TEXT")
     private String comment;
 

@@ -1,40 +1,71 @@
 package com.shopbazar.shopbazar.service;
 
+import com.shopbazar.shopbazar.dto.TrackingHistoryResponse;
+import com.shopbazar.shopbazar.dto.TrackingResponse;
+import com.shopbazar.shopbazar.dto.TrackingUpdateRequest;
+import com.shopbazar.shopbazar.entity.Shipment;
 import com.shopbazar.shopbazar.entity.ShipmentTracking;
+import com.shopbazar.shopbazar.exception.ResourceNotFoundException;
+import com.shopbazar.shopbazar.repository.ShipmentRepository;
 import com.shopbazar.shopbazar.repository.ShipmentTrackingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class ShipmentTrackingService {
 
     private final ShipmentTrackingRepository shipmentTrackingRepository;
+    private final ShipmentRepository shipmentRepository;
 
-    public ShipmentTracking createShipmentTracking(ShipmentTracking tracking) {
-        return shipmentTrackingRepository.save(tracking);
+    @Transactional
+    public TrackingResponse addTrackingUpdate(Long shipmentId, TrackingUpdateRequest request) {
+        Shipment shipment = shipmentRepository.findById(shipmentId)
+                .orElseThrow(() -> new ResourceNotFoundException("Shipment not found with id: " + shipmentId));
+
+        ShipmentTracking tracking = ShipmentTracking.builder()
+                .shipment(shipment)
+                .status(request.getStatus())
+                .location(request.getLocation())
+                .description(request.getDescription())
+                .build();
+
+        ShipmentTracking savedTracking = shipmentTrackingRepository.save(tracking);
+
+        // Update shipment status as well
+        shipment.setShipmentStatus(request.getStatus());
+        shipmentRepository.save(shipment);
+
+        return TrackingResponse.builder()
+                .trackingId(savedTracking.getTrackingId())
+                .shipmentId(shipmentId)
+                .status(savedTracking.getStatus())
+                .message("Tracking update added")
+                .build();
     }
 
-    public Optional<ShipmentTracking> getShipmentTrackingById(Long trackingId) {
-        return shipmentTrackingRepository.findById(trackingId);
-    }
+    @Transactional(readOnly = true)
+    public TrackingHistoryResponse getTrackingHistory(Long shipmentId) {
+        if (!shipmentRepository.existsById(shipmentId)) {
+            throw new ResourceNotFoundException("Shipment not found with id: " + shipmentId);
+        }
 
-    public List<ShipmentTracking> getAllShipmentTrackings() {
-        return shipmentTrackingRepository.findAll();
-    }
+        List<ShipmentTracking> trackingList = shipmentTrackingRepository.findByShipment_ShipmentIdOrderByUpdatedAtAsc(shipmentId);
 
-    public ShipmentTracking updateShipmentTracking(Long trackingId, ShipmentTracking tracking) {
-        ShipmentTracking existing = shipmentTrackingRepository.findById(trackingId)
-                .orElseThrow(() -> new RuntimeException("ShipmentTracking not found with id: " + trackingId));
-        existing.setStatus(tracking.getStatus());
-        existing.setLocation(tracking.getLocation());
-        existing.setDescription(tracking.getDescription());
-        return shipmentTrackingRepository.save(existing);
-    }
-
-    public void deleteShipmentTracking(Long trackingId) {
-        shipmentTrackingRepository.deleteById(trackingId);
+        return TrackingHistoryResponse.builder()
+                .shipmentId(shipmentId)
+                .tracking(trackingList.stream()
+                        .map(t -> TrackingHistoryResponse.TrackingItem.builder()
+                                .status(t.getStatus())
+                                .location(t.getLocation())
+                                .description(t.getDescription())
+                                .time(t.getUpdatedAt())
+                                .build())
+                        .collect(Collectors.toList()))
+                .build();
     }
 }
