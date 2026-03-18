@@ -1,5 +1,6 @@
 package com.shopbazar.shopbazar.service;
 
+import com.shopbazar.shopbazar.dto.RatingSummaryResponse;
 import com.shopbazar.shopbazar.dto.ReviewRequest;
 import com.shopbazar.shopbazar.dto.ReviewResponse;
 import com.shopbazar.shopbazar.dto.ReviewUpdateRequest;
@@ -16,6 +17,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -54,6 +60,37 @@ public class ReviewService {
             throw new ResourceNotFoundException("Product not found with id: " + productId);
         }
         return reviewRepository.findByProduct_ProductId(productId, pageable).map(this::mapToResponse);
+    }
+
+    @Transactional(readOnly = true)
+    public RatingSummaryResponse getRatingSummary(Long productId) {
+        if (!productRepository.existsById(productId)) {
+            throw new ResourceNotFoundException("Product not found with id: " + productId);
+        }
+
+        List<Review> reviews = reviewRepository.findByProduct_ProductId(productId);
+        int totalRatings = reviews.size();
+        
+        double averageRating = reviews.stream()
+                .mapToInt(Review::getRating)
+                .average()
+                .orElse(0.0);
+
+        Map<Integer, Long> breakdown = new HashMap<>();
+        for (int i = 1; i <= 5; i++) {
+            breakdown.put(i, 0L);
+        }
+        
+        reviews.stream()
+                .collect(Collectors.groupingBy(Review::getRating, Collectors.counting()))
+                .forEach(breakdown::put);
+
+        return RatingSummaryResponse.builder()
+                .productId(productId)
+                .averageRating(averageRating)
+                .totalRatings(totalRatings)
+                .ratingBreakdown(breakdown)
+                .build();
     }
 
     @Transactional

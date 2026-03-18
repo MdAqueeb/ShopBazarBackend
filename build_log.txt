@@ -1,0 +1,632 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.shopbazar:shopbazar >-----------------------
+[INFO] Building shopbazar 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.4.0:clean (default-clean) @ shopbazar ---
+[INFO] Deleting C:\Users\91855\OneDrive\Desktop\shopbazar\target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ shopbazar ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ shopbazar ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 145 source files with javac [debug parameters release 17] to target\classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/entity/OrderStatusHistory.java:[7,44] cannot find symbol
+  symbol:   class OrderBuilder
+  location: class com.shopbazar.shopbazar.entity.Order
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/dto/AuthResponse.java:[11,1] lombok.Data is not a repeatable annotation interface
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/security/CustomUserDetailsService.java:[26,21] cannot find symbol
+  symbol:   method getEmail()
+  location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/security/CustomUserDetailsService.java:[27,21] cannot find symbol
+  symbol:   method getPassword()
+  location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/security/CustomUserDetailsService.java:[28,84] cannot find symbol
+  symbol:   method getRole()
+  location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/controller/AddressController.java:[36,76] cannot find symbol
+  symbol:   method <com.shopbazar.shopbazar.entity.Address>builder()
+  location: class com.shopbazar.shopbazar.dto.ApiResponse
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/controller/AddressController.java:[54,73] cannot find symbol
+  symbol:   method <java.util.List<com.shopbazar.shopbazar.entity.Address>>builder()
+  location: class com.shopbazar.shopbazar.dto.ApiResponse
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/controller/AddressController.java:[74,73] cannot find symbol
+  symbol:   method <com.shopbazar.shopbazar.entity.Address>builder()
+  location: class com.shopbazar.shopbazar.dto.ApiResponse
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/controller/AddressController.java:[94,73] cannot find symbol
+  symbol:   method <com.shopbazar.shopbazar.entity.Address>builder()
+  location: class com.shopbazar.shopbazar.dto.ApiResponse
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/controller/AddressController.java:[114,73] cannot find symbol
+  symbol:   method <java.lang.Void>builder()
+  location: class com.shopbazar.shopbazar.dto.ApiResponse
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/controller/AddressController.java:[134,73] cannot find symbol
+  symbol:   method <com.shopbazar.shopbazar.entity.Address>builder()
+  location: class com.shopbazar.shopbazar.dto.ApiResponse
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[27,40] cannot find symbol
+  symbol:   method getIsDefault()
+  location: variable address of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[29,24] cannot find symbol
+  symbol:   method getAddresses()
+  location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[29,55] cannot find symbol
+  symbol:   method getAddresses()
+  location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[30,20] cannot find symbol
+  symbol:   method setIsDefault(boolean)
+  location: variable address of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[33,16] cannot find symbol
+  symbol:   method setUser(com.shopbazar.shopbazar.entity.User)
+  location: variable address of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[41,20] cannot find symbol
+  symbol:   method getAddresses()
+  location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[52,21] cannot find symbol
+  symbol:   method getUser()
+  location: variable address of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[63,27] cannot find symbol
+  symbol:   method getName()
+  location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[63,78] cannot find symbol
+  symbol:   method getName()
+  location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[64,27] cannot find symbol
+  symbol:   method getPhone()
+  location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[64,80] cannot find symbol
+  symbol:   method getPhone()
+  location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[65,27] cannot find symbol
+  symbol:   method getStreet()
+  location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[65,82] cannot find symbol
+  symbol:   method getStreet()
+  location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[66,27] cannot find symbol
+  symbol:   method getCity()
+  location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[66,78] cannot find symbol
+  symbol:   method getCity()
+  location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[67,27] cannot find symbol
+  symbol:   method getState()
+  location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[67,80] cannot find symbol
+  symbol:   method getState()
+  location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[68,27] cannot find symbol
+  symbol:   method getPostalCode()
+  location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[68,90] cannot find symbol
+  symbol:   method getPostalCode()
+  location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[69,27] cannot find symbol
+  symbol:   method getCountry()
+  location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[69,84] cannot find symbol
+  symbol:   method getCountry()
+  location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[72,47] cannot find symbol
+  symbol:   method getIsDefault()
+  location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[72,96] cannot find symbol
+  symbol:   method getIsDefault()
+  location: variable existing of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[73,40] cannot find symbol
+  symbol:   method getUser()
+  location: variable existing of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[74,21] cannot find symbol
+  symbol:   method setIsDefault(boolean)
+  location: variable existing of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[75,34] cannot find symbol
+  symbol:   method getIsDefault()
+  location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[76,49] cannot find symbol
+  symbol:   method getIsDefault()
+  location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[91,36] cannot find symbol
+  symbol:   method getUser()
+  location: variable existing of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[92,17] cannot find symbol
+  symbol:   method setIsDefault(boolean)
+  location: variable existing of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[97,17] cannot find symbol
+  symbol:   method getAddresses()
+  location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[98,37] cannot find symbol
+  symbol:   method getAddresses()
+  location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[99,45] cannot find symbol
+  symbol:   method getIsDefault()
+  location: variable addr of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[100,25] cannot find symbol
+  symbol:   method setIsDefault(boolean)
+  location: variable addr of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/controller/AdminController.java:[59,71] cannot find symbol
+  symbol:   method getReason()
+  location: variable request of type com.shopbazar.shopbazar.dto.BlockRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/controller/AdminController.java:[112,78] cannot find symbol
+  symbol:   method getReason()
+  location: variable request of type com.shopbazar.shopbazar.dto.RejectRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/controller/AdminController.java:[153,80] cannot find symbol
+  symbol:   method getReason()
+  location: variable request of type com.shopbazar.shopbazar.dto.BlockRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[27,24] cannot find symbol
+  symbol:   method getFirstName()
+  location: variable userDetails of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[27,82] cannot find symbol
+  symbol:   method getFirstName()
+  location: variable userDetails of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[28,24] cannot find symbol
+  symbol:   method getLastName()
+  location: variable userDetails of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[28,80] cannot find symbol
+  symbol:   method getLastName()
+  location: variable userDetails of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[29,24] cannot find symbol
+  symbol:   method getEmail()
+  location: variable userDetails of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[29,74] cannot find symbol
+  symbol:   method getEmail()
+  location: variable userDetails of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[30,24] cannot find symbol
+  symbol:   method getPhone()
+  location: variable userDetails of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[30,74] cannot find symbol
+  symbol:   method getPhone()
+  location: variable userDetails of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[45,17] cannot find symbol
+  symbol:   method setStatus(com.shopbazar.shopbazar.entity.User.Status)
+  location: variable existing of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[53,17] cannot find symbol
+  symbol:   method setRole(com.shopbazar.shopbazar.entity.Role)
+  location: variable existing of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[59,13] cannot find symbol
+  symbol:   method setStatus(com.shopbazar.shopbazar.entity.User.Status)
+  location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[60,13] cannot find symbol
+  symbol:   method setBlockReason(java.lang.String)
+  location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[66,13] cannot find symbol
+  symbol:   method setStatus(com.shopbazar.shopbazar.entity.User.Status)
+  location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[67,13] cannot find symbol
+  symbol:   method setBlockReason(<nulltype>)
+  location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[44,20] cannot find symbol
+  symbol:   method getStoreName()
+  location: variable request of type com.shopbazar.shopbazar.dto.SellerUpdateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[44,72] cannot find symbol
+  symbol:   method getStoreName()
+  location: variable request of type com.shopbazar.shopbazar.dto.SellerUpdateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[45,20] cannot find symbol
+  symbol:   method getDescription()
+  location: variable request of type com.shopbazar.shopbazar.dto.SellerUpdateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[45,76] cannot find symbol
+  symbol:   method getDescription()
+  location: variable request of type com.shopbazar.shopbazar.dto.SellerUpdateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[77,39] cannot find symbol
+  symbol:   method builder()
+  location: class com.shopbazar.shopbazar.dto.SellerAnalyticsResponse
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[86,52] cannot find symbol
+  symbol:   method getUserId()
+  location: variable request of type com.shopbazar.shopbazar.dto.SellerApplyRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[87,102] cannot find symbol
+  symbol:   method getUserId()
+  location: variable request of type com.shopbazar.shopbazar.dto.SellerApplyRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[89,54] cannot find symbol
+  symbol:   method getUserId()
+  location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[93,31] cannot find symbol
+  symbol:   method builder()
+  location: class com.shopbazar.shopbazar.entity.Seller
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[95,35] cannot find symbol
+  symbol:   method getStoreName()
+  location: variable request of type com.shopbazar.shopbazar.dto.SellerApplyRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[96,37] cannot find symbol
+  symbol:   method getStoreDescription()
+  location: variable request of type com.shopbazar.shopbazar.dto.SellerApplyRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[97,28] cannot find symbol
+  symbol:   method getEmail()
+  location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[98,31] cannot find symbol
+  symbol:   method getPhone()
+  location: variable request of type com.shopbazar.shopbazar.dto.SellerApplyRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[99,35] cannot find symbol
+  symbol:   method getGstNumber()
+  location: variable request of type com.shopbazar.shopbazar.dto.SellerApplyRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[113,39] cannot find symbol
+  symbol:   method builder()
+  location: class com.shopbazar.shopbazar.dto.SellerDashboardResponse
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[115,34] cannot find symbol
+  symbol:   method getStoreName()
+  location: variable seller of type com.shopbazar.shopbazar.entity.Seller
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[116,31] cannot find symbol
+  symbol:   method getStatus()
+  location: variable seller of type com.shopbazar.shopbazar.entity.Seller
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[126,15] cannot find symbol
+  symbol:   method setStatus(com.shopbazar.shopbazar.entity.Seller.Status)
+  location: variable seller of type com.shopbazar.shopbazar.entity.Seller
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[133,19] cannot find symbol
+  symbol:   method getStatus()
+  location: variable seller of type com.shopbazar.shopbazar.entity.Seller
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[136,15] cannot find symbol
+  symbol:   method setStatus(com.shopbazar.shopbazar.entity.Seller.Status)
+  location: variable seller of type com.shopbazar.shopbazar.entity.Seller
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[137,15] cannot find symbol
+  symbol:   method setRejectionReason(<nulltype>)
+  location: variable seller of type com.shopbazar.shopbazar.entity.Seller
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[144,15] cannot find symbol
+  symbol:   method setStatus(com.shopbazar.shopbazar.entity.Seller.Status)
+  location: variable seller of type com.shopbazar.shopbazar.entity.Seller
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[145,15] cannot find symbol
+  symbol:   method setRejectionReason(java.lang.String)
+  location: variable seller of type com.shopbazar.shopbazar.entity.Seller
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[37,58] cannot find symbol
+  symbol:   method getSellerId()
+  location: variable request of type com.shopbazar.shopbazar.dto.ProductCreateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[40,19] cannot find symbol
+  symbol:   method getStatus()
+  location: variable seller of type com.shopbazar.shopbazar.entity.Seller
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[44,64] cannot find symbol
+  symbol:   method getCategoryId()
+  location: variable request of type com.shopbazar.shopbazar.dto.ProductCreateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[45,106] cannot find symbol
+  symbol:   method getCategoryId()
+  location: variable request of type com.shopbazar.shopbazar.dto.ProductCreateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[47,34] cannot find symbol
+  symbol:   method builder()
+  location: class com.shopbazar.shopbazar.entity.Product
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[50,30] cannot find symbol
+  symbol:   method getName()
+  location: variable request of type com.shopbazar.shopbazar.dto.ProductCreateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[51,37] cannot find symbol
+  symbol:   method getDescription()
+  location: variable request of type com.shopbazar.shopbazar.dto.ProductCreateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[52,31] cannot find symbol
+  symbol:   method getPrice()
+  location: variable request of type com.shopbazar.shopbazar.dto.ProductCreateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[53,32] cannot find symbol
+  symbol:   method getStatus()
+  location: variable request of type com.shopbazar.shopbazar.dto.ProductCreateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[53,62] cannot find symbol
+  symbol:   method getStatus()
+  location: variable request of type com.shopbazar.shopbazar.dto.ProductCreateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[80,20] cannot find symbol
+  symbol:   method getName()
+  location: variable request of type com.shopbazar.shopbazar.dto.ProductUpdateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[80,64] cannot find symbol
+  symbol:   method getName()
+  location: variable request of type com.shopbazar.shopbazar.dto.ProductUpdateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[81,20] cannot find symbol
+  symbol:   method getDescription()
+  location: variable request of type com.shopbazar.shopbazar.dto.ProductUpdateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[81,78] cannot find symbol
+  symbol:   method getDescription()
+  location: variable request of type com.shopbazar.shopbazar.dto.ProductUpdateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[82,20] cannot find symbol
+  symbol:   method getPrice()
+  location: variable request of type com.shopbazar.shopbazar.dto.ProductUpdateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[82,66] cannot find symbol
+  symbol:   method getPrice()
+  location: variable request of type com.shopbazar.shopbazar.dto.ProductUpdateRequest
+[INFO] 100 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.579 s
+[INFO] Finished at: 2026-03-18T02:34:01+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project shopbazar: Compilation failure: Compilation failure: 
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/entity/OrderStatusHistory.java:[7,44] cannot find symbol
+[ERROR]   symbol:   class OrderBuilder
+[ERROR]   location: class com.shopbazar.shopbazar.entity.Order
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/dto/AuthResponse.java:[11,1] lombok.Data is not a repeatable annotation interface
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/security/CustomUserDetailsService.java:[26,21] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/security/CustomUserDetailsService.java:[27,21] cannot find symbol
+[ERROR]   symbol:   method getPassword()
+[ERROR]   location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/security/CustomUserDetailsService.java:[28,84] cannot find symbol
+[ERROR]   symbol:   method getRole()
+[ERROR]   location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/controller/AddressController.java:[36,76] cannot find symbol
+[ERROR]   symbol:   method <com.shopbazar.shopbazar.entity.Address>builder()
+[ERROR]   location: class com.shopbazar.shopbazar.dto.ApiResponse
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/controller/AddressController.java:[54,73] cannot find symbol
+[ERROR]   symbol:   method <java.util.List<com.shopbazar.shopbazar.entity.Address>>builder()
+[ERROR]   location: class com.shopbazar.shopbazar.dto.ApiResponse
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/controller/AddressController.java:[74,73] cannot find symbol
+[ERROR]   symbol:   method <com.shopbazar.shopbazar.entity.Address>builder()
+[ERROR]   location: class com.shopbazar.shopbazar.dto.ApiResponse
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/controller/AddressController.java:[94,73] cannot find symbol
+[ERROR]   symbol:   method <com.shopbazar.shopbazar.entity.Address>builder()
+[ERROR]   location: class com.shopbazar.shopbazar.dto.ApiResponse
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/controller/AddressController.java:[114,73] cannot find symbol
+[ERROR]   symbol:   method <java.lang.Void>builder()
+[ERROR]   location: class com.shopbazar.shopbazar.dto.ApiResponse
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/controller/AddressController.java:[134,73] cannot find symbol
+[ERROR]   symbol:   method <com.shopbazar.shopbazar.entity.Address>builder()
+[ERROR]   location: class com.shopbazar.shopbazar.dto.ApiResponse
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[27,40] cannot find symbol
+[ERROR]   symbol:   method getIsDefault()
+[ERROR]   location: variable address of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[29,24] cannot find symbol
+[ERROR]   symbol:   method getAddresses()
+[ERROR]   location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[29,55] cannot find symbol
+[ERROR]   symbol:   method getAddresses()
+[ERROR]   location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[30,20] cannot find symbol
+[ERROR]   symbol:   method setIsDefault(boolean)
+[ERROR]   location: variable address of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[33,16] cannot find symbol
+[ERROR]   symbol:   method setUser(com.shopbazar.shopbazar.entity.User)
+[ERROR]   location: variable address of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[41,20] cannot find symbol
+[ERROR]   symbol:   method getAddresses()
+[ERROR]   location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[52,21] cannot find symbol
+[ERROR]   symbol:   method getUser()
+[ERROR]   location: variable address of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[63,27] cannot find symbol
+[ERROR]   symbol:   method getName()
+[ERROR]   location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[63,78] cannot find symbol
+[ERROR]   symbol:   method getName()
+[ERROR]   location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[64,27] cannot find symbol
+[ERROR]   symbol:   method getPhone()
+[ERROR]   location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[64,80] cannot find symbol
+[ERROR]   symbol:   method getPhone()
+[ERROR]   location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[65,27] cannot find symbol
+[ERROR]   symbol:   method getStreet()
+[ERROR]   location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[65,82] cannot find symbol
+[ERROR]   symbol:   method getStreet()
+[ERROR]   location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[66,27] cannot find symbol
+[ERROR]   symbol:   method getCity()
+[ERROR]   location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[66,78] cannot find symbol
+[ERROR]   symbol:   method getCity()
+[ERROR]   location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[67,27] cannot find symbol
+[ERROR]   symbol:   method getState()
+[ERROR]   location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[67,80] cannot find symbol
+[ERROR]   symbol:   method getState()
+[ERROR]   location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[68,27] cannot find symbol
+[ERROR]   symbol:   method getPostalCode()
+[ERROR]   location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[68,90] cannot find symbol
+[ERROR]   symbol:   method getPostalCode()
+[ERROR]   location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[69,27] cannot find symbol
+[ERROR]   symbol:   method getCountry()
+[ERROR]   location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[69,84] cannot find symbol
+[ERROR]   symbol:   method getCountry()
+[ERROR]   location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[72,47] cannot find symbol
+[ERROR]   symbol:   method getIsDefault()
+[ERROR]   location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[72,96] cannot find symbol
+[ERROR]   symbol:   method getIsDefault()
+[ERROR]   location: variable existing of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[73,40] cannot find symbol
+[ERROR]   symbol:   method getUser()
+[ERROR]   location: variable existing of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[74,21] cannot find symbol
+[ERROR]   symbol:   method setIsDefault(boolean)
+[ERROR]   location: variable existing of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[75,34] cannot find symbol
+[ERROR]   symbol:   method getIsDefault()
+[ERROR]   location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[76,49] cannot find symbol
+[ERROR]   symbol:   method getIsDefault()
+[ERROR]   location: variable addressDetails of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[91,36] cannot find symbol
+[ERROR]   symbol:   method getUser()
+[ERROR]   location: variable existing of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[92,17] cannot find symbol
+[ERROR]   symbol:   method setIsDefault(boolean)
+[ERROR]   location: variable existing of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[97,17] cannot find symbol
+[ERROR]   symbol:   method getAddresses()
+[ERROR]   location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[98,37] cannot find symbol
+[ERROR]   symbol:   method getAddresses()
+[ERROR]   location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[99,45] cannot find symbol
+[ERROR]   symbol:   method getIsDefault()
+[ERROR]   location: variable addr of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/AddressService.java:[100,25] cannot find symbol
+[ERROR]   symbol:   method setIsDefault(boolean)
+[ERROR]   location: variable addr of type com.shopbazar.shopbazar.entity.Address
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/controller/AdminController.java:[59,71] cannot find symbol
+[ERROR]   symbol:   method getReason()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.BlockRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/controller/AdminController.java:[112,78] cannot find symbol
+[ERROR]   symbol:   method getReason()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.RejectRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/controller/AdminController.java:[153,80] cannot find symbol
+[ERROR]   symbol:   method getReason()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.BlockRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[27,24] cannot find symbol
+[ERROR]   symbol:   method getFirstName()
+[ERROR]   location: variable userDetails of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[27,82] cannot find symbol
+[ERROR]   symbol:   method getFirstName()
+[ERROR]   location: variable userDetails of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[28,24] cannot find symbol
+[ERROR]   symbol:   method getLastName()
+[ERROR]   location: variable userDetails of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[28,80] cannot find symbol
+[ERROR]   symbol:   method getLastName()
+[ERROR]   location: variable userDetails of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[29,24] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable userDetails of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[29,74] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable userDetails of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[30,24] cannot find symbol
+[ERROR]   symbol:   method getPhone()
+[ERROR]   location: variable userDetails of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[30,74] cannot find symbol
+[ERROR]   symbol:   method getPhone()
+[ERROR]   location: variable userDetails of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[45,17] cannot find symbol
+[ERROR]   symbol:   method setStatus(com.shopbazar.shopbazar.entity.User.Status)
+[ERROR]   location: variable existing of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[53,17] cannot find symbol
+[ERROR]   symbol:   method setRole(com.shopbazar.shopbazar.entity.Role)
+[ERROR]   location: variable existing of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[59,13] cannot find symbol
+[ERROR]   symbol:   method setStatus(com.shopbazar.shopbazar.entity.User.Status)
+[ERROR]   location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[60,13] cannot find symbol
+[ERROR]   symbol:   method setBlockReason(java.lang.String)
+[ERROR]   location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[66,13] cannot find symbol
+[ERROR]   symbol:   method setStatus(com.shopbazar.shopbazar.entity.User.Status)
+[ERROR]   location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/UserService.java:[67,13] cannot find symbol
+[ERROR]   symbol:   method setBlockReason(<nulltype>)
+[ERROR]   location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[44,20] cannot find symbol
+[ERROR]   symbol:   method getStoreName()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.SellerUpdateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[44,72] cannot find symbol
+[ERROR]   symbol:   method getStoreName()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.SellerUpdateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[45,20] cannot find symbol
+[ERROR]   symbol:   method getDescription()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.SellerUpdateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[45,76] cannot find symbol
+[ERROR]   symbol:   method getDescription()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.SellerUpdateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[77,39] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.shopbazar.shopbazar.dto.SellerAnalyticsResponse
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[86,52] cannot find symbol
+[ERROR]   symbol:   method getUserId()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.SellerApplyRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[87,102] cannot find symbol
+[ERROR]   symbol:   method getUserId()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.SellerApplyRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[89,54] cannot find symbol
+[ERROR]   symbol:   method getUserId()
+[ERROR]   location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[93,31] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.shopbazar.shopbazar.entity.Seller
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[95,35] cannot find symbol
+[ERROR]   symbol:   method getStoreName()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.SellerApplyRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[96,37] cannot find symbol
+[ERROR]   symbol:   method getStoreDescription()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.SellerApplyRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[97,28] cannot find symbol
+[ERROR]   symbol:   method getEmail()
+[ERROR]   location: variable user of type com.shopbazar.shopbazar.entity.User
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[98,31] cannot find symbol
+[ERROR]   symbol:   method getPhone()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.SellerApplyRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[99,35] cannot find symbol
+[ERROR]   symbol:   method getGstNumber()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.SellerApplyRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[113,39] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.shopbazar.shopbazar.dto.SellerDashboardResponse
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[115,34] cannot find symbol
+[ERROR]   symbol:   method getStoreName()
+[ERROR]   location: variable seller of type com.shopbazar.shopbazar.entity.Seller
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[116,31] cannot find symbol
+[ERROR]   symbol:   method getStatus()
+[ERROR]   location: variable seller of type com.shopbazar.shopbazar.entity.Seller
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[126,15] cannot find symbol
+[ERROR]   symbol:   method setStatus(com.shopbazar.shopbazar.entity.Seller.Status)
+[ERROR]   location: variable seller of type com.shopbazar.shopbazar.entity.Seller
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[133,19] cannot find symbol
+[ERROR]   symbol:   method getStatus()
+[ERROR]   location: variable seller of type com.shopbazar.shopbazar.entity.Seller
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[136,15] cannot find symbol
+[ERROR]   symbol:   method setStatus(com.shopbazar.shopbazar.entity.Seller.Status)
+[ERROR]   location: variable seller of type com.shopbazar.shopbazar.entity.Seller
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[137,15] cannot find symbol
+[ERROR]   symbol:   method setRejectionReason(<nulltype>)
+[ERROR]   location: variable seller of type com.shopbazar.shopbazar.entity.Seller
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[144,15] cannot find symbol
+[ERROR]   symbol:   method setStatus(com.shopbazar.shopbazar.entity.Seller.Status)
+[ERROR]   location: variable seller of type com.shopbazar.shopbazar.entity.Seller
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/SellerService.java:[145,15] cannot find symbol
+[ERROR]   symbol:   method setRejectionReason(java.lang.String)
+[ERROR]   location: variable seller of type com.shopbazar.shopbazar.entity.Seller
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[37,58] cannot find symbol
+[ERROR]   symbol:   method getSellerId()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.ProductCreateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[40,19] cannot find symbol
+[ERROR]   symbol:   method getStatus()
+[ERROR]   location: variable seller of type com.shopbazar.shopbazar.entity.Seller
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[44,64] cannot find symbol
+[ERROR]   symbol:   method getCategoryId()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.ProductCreateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[45,106] cannot find symbol
+[ERROR]   symbol:   method getCategoryId()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.ProductCreateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[47,34] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.shopbazar.shopbazar.entity.Product
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[50,30] cannot find symbol
+[ERROR]   symbol:   method getName()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.ProductCreateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[51,37] cannot find symbol
+[ERROR]   symbol:   method getDescription()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.ProductCreateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[52,31] cannot find symbol
+[ERROR]   symbol:   method getPrice()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.ProductCreateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[53,32] cannot find symbol
+[ERROR]   symbol:   method getStatus()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.ProductCreateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[53,62] cannot find symbol
+[ERROR]   symbol:   method getStatus()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.ProductCreateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[80,20] cannot find symbol
+[ERROR]   symbol:   method getName()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.ProductUpdateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[80,64] cannot find symbol
+[ERROR]   symbol:   method getName()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.ProductUpdateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[81,20] cannot find symbol
+[ERROR]   symbol:   method getDescription()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.ProductUpdateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[81,78] cannot find symbol
+[ERROR]   symbol:   method getDescription()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.ProductUpdateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[82,20] cannot find symbol
+[ERROR]   symbol:   method getPrice()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.ProductUpdateRequest
+[ERROR] /C:/Users/91855/OneDrive/Desktop/shopbazar/src/main/java/com/shopbazar/shopbazar/service/ProductService.java:[82,66] cannot find symbol
+[ERROR]   symbol:   method getPrice()
+[ERROR]   location: variable request of type com.shopbazar.shopbazar.dto.ProductUpdateRequest
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

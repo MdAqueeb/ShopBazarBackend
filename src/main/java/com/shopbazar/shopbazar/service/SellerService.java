@@ -6,12 +6,14 @@ import com.shopbazar.shopbazar.dto.SellerDashboardResponse;
 import com.shopbazar.shopbazar.dto.SellerUpdateRequest;
 import com.shopbazar.shopbazar.entity.OrderItem;
 import com.shopbazar.shopbazar.entity.Product;
+import com.shopbazar.shopbazar.entity.Role;
 import com.shopbazar.shopbazar.entity.Seller;
 import com.shopbazar.shopbazar.entity.User;
 import com.shopbazar.shopbazar.exception.BadRequestException;
 import com.shopbazar.shopbazar.exception.ResourceNotFoundException;
 import com.shopbazar.shopbazar.repository.OrderItemRepository;
 import com.shopbazar.shopbazar.repository.ProductRepository;
+import com.shopbazar.shopbazar.repository.RoleRepository;
 import com.shopbazar.shopbazar.repository.SellerRepository;
 import com.shopbazar.shopbazar.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +31,7 @@ public class SellerService {
 
     private final SellerRepository sellerRepository;
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
     private final ProductRepository productRepository;
     private final OrderItemRepository orderItemRepository;
 
@@ -86,6 +89,10 @@ public class SellerService {
         User user = userRepository.findById(request.getUserId())
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + request.getUserId()));
 
+        if (user.getRole().getRoleName() != Role.RoleName.CUSTOMER) {
+            throw new BadRequestException("Only customers can apply for a seller profile");
+        }
+
         if (sellerRepository.existsByUser_UserId(user.getUserId())) {
             throw new BadRequestException("User has already applied for a seller profile");
         }
@@ -125,5 +132,37 @@ public class SellerService {
         Seller seller = getSellerById(sellerId);
         seller.setStatus(Seller.Status.REJECTED); // Or create INACTIVE status enum
         return sellerRepository.save(seller);
+    }
+
+    @Transactional
+    public Seller approveSeller(Long sellerId) {
+        Seller seller = getSellerById(sellerId);
+        if (seller.getStatus() == Seller.Status.APPROVED) {
+            throw new BadRequestException("Seller is already approved");
+        }
+        seller.setStatus(Seller.Status.APPROVED);
+        seller.setRejectionReason(null);
+        
+        // Update user's role to SELLER
+        User user = seller.getUser();
+        Role sellerRole = roleRepository.findByRoleName(Role.RoleName.SELLER)
+                .orElseThrow(() -> new ResourceNotFoundException("SELLER role not found"));
+        user.setRole(sellerRole);
+        userRepository.save(user);
+
+        return sellerRepository.save(seller);
+    }
+
+    @Transactional
+    public Seller rejectSeller(Long sellerId, String reason) {
+        Seller seller = getSellerById(sellerId);
+        seller.setStatus(Seller.Status.REJECTED);
+        seller.setRejectionReason(reason);
+        return sellerRepository.save(seller);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<Seller> getSellersByStatus(Seller.Status status, Pageable pageable) {
+        return sellerRepository.findByStatus(status, pageable);
     }
 }

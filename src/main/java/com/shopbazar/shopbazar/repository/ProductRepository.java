@@ -15,6 +15,7 @@ import java.util.List;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
+    Page<Product> findByStatus(Product.Status status, Pageable pageable);
     Page<Product> findBySeller_SellerId(Long sellerId, Pageable pageable);
     
     Page<Product> findBySeller_SellerIdAndStatus(Long sellerId, Product.Status status, Pageable pageable);

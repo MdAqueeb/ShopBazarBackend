@@ -16,7 +16,7 @@ import java.util.List;
 public class Product {
 
     public enum Status {
-        ACTIVE, INACTIVE
+        ACTIVE, INACTIVE, BLOCKED
     }
 
     @Id
@@ -48,6 +48,9 @@ public class Product {
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private Status status;
+
+    @Column(name = "block_reason")
+    private String blockReason;
 
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)

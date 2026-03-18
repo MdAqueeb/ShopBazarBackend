@@ -148,4 +148,25 @@ public class ProductService {
         // In a real app we'd also delete the file from the cloud bucket here
         productImageRepository.delete(image);
     }
+
+    @Transactional
+    public Product approveProduct(Long productId) {
+        Product product = getProductById(productId);
+        product.setStatus(Product.Status.ACTIVE);
+        product.setBlockReason(null);
+        return productRepository.save(product);
+    }
+
+    @Transactional
+    public Product blockProduct(Long productId, String reason) {
+        Product product = getProductById(productId);
+        product.setStatus(Product.Status.BLOCKED);
+        product.setBlockReason(reason);
+        return productRepository.save(product);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<Product> getProductsByStatus(Product.Status status, Pageable pageable) {
+        return productRepository.findByStatus(status, pageable);
+    }
 }

@@ -24,7 +24,8 @@ public class UserService {
 
     public User updateUserProfile(Long userId, User userDetails) {
         User existing = getUserById(userId);
-        if (userDetails.getName() != null) existing.setName(userDetails.getName());
+        if (userDetails.getFirstName() != null) existing.setFirstName(userDetails.getFirstName());
+        if (userDetails.getLastName() != null) existing.setLastName(userDetails.getLastName());
         if (userDetails.getEmail() != null) existing.setEmail(userDetails.getEmail());
         if (userDetails.getPhone() != null) existing.setPhone(userDetails.getPhone());
         return userRepository.save(existing);
@@ -51,5 +52,23 @@ public class UserService {
                 .orElseThrow(() -> new ResourceNotFoundException("Role not found with id: " + roleId));
         existing.setRole(role);
         return userRepository.save(existing);
+    }
+
+    public User blockUser(Long userId, String reason) {
+        User user = getUserById(userId);
+        user.setStatus(User.Status.BLOCKED);
+        user.setBlockReason(reason);
+        return userRepository.save(user);
+    }
+
+    public User unblockUser(Long userId) {
+        User user = getUserById(userId);
+        user.setStatus(User.Status.ACTIVE);
+        user.setBlockReason(null);
+        return userRepository.save(user);
+    }
+
+    public Page<User> getUsersByStatus(User.Status status, Pageable pageable) {
+        return userRepository.findByStatus(status, pageable);
     }
 }

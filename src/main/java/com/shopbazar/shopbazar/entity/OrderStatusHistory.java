@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.shopbazar.shopbazar.entity.Order.OrderBuilder;
-
 import java.time.LocalDateTime;
 
 @Entity

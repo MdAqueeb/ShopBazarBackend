@@ -46,6 +46,9 @@ public class Seller {
     @Column(name = "status", nullable = false)
     private Status status;
 
+    @Column(name = "rejection_reason")
+    private String rejectionReason;
+
     @OneToMany(mappedBy = "seller", fetch = FetchType.LAZY)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
