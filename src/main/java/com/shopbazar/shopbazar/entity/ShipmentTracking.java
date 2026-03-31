@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "shipment_tracking")
 @Data
@@ -21,6 +21,7 @@ public class ShipmentTracking {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shipment_id", nullable = false)
     @ToString.Exclude
+    @JsonIgnore
     @EqualsAndHashCode.Exclude
     private Shipment shipment;
 

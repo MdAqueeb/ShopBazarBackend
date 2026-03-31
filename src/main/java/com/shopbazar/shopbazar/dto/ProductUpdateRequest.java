@@ -1,10 +1,12 @@
 package com.shopbazar.shopbazar.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
+import lombok.*;
 import java.math.BigDecimal;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor 
 @Schema(description = "Request to update an existing product")
 public class ProductUpdateRequest {
     @Schema(description = "Updated product name", example = "iPhone 15 Pro Max")

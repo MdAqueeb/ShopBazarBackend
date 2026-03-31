@@ -1,6 +1,8 @@
 package com.shopbazar.shopbazar.service;
 
 import com.shopbazar.shopbazar.dto.ProductCreateRequest;
+import com.shopbazar.shopbazar.dto.ProductImageResponse;
+import com.shopbazar.shopbazar.dto.ProductResponse;
 import com.shopbazar.shopbazar.dto.ProductUpdateRequest;
 import com.shopbazar.shopbazar.entity.Category;
 import com.shopbazar.shopbazar.entity.Product;
@@ -9,12 +11,14 @@ import com.shopbazar.shopbazar.entity.Seller;
 import com.shopbazar.shopbazar.exception.BadRequestException;
 import com.shopbazar.shopbazar.exception.ForbiddenException;
 import com.shopbazar.shopbazar.exception.ResourceNotFoundException;
+import com.shopbazar.shopbazar.mapper.DtoMapper;
 import com.shopbazar.shopbazar.repository.CategoryRepository;
 import com.shopbazar.shopbazar.repository.ProductImageRepository;
 import com.shopbazar.shopbazar.repository.ProductRepository;
 import com.shopbazar.shopbazar.repository.SellerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -33,7 +38,7 @@ public class ProductService {
     private final ProductImageRepository productImageRepository;
 
     @Transactional
-    public Product createProduct(ProductCreateRequest request) {
+    public ProductResponse createProduct(ProductCreateRequest request) {
         Seller seller = sellerRepository.findById(request.getSellerId())
                 .orElseThrow(() -> new ForbiddenException("Invalid seller profile or not a seller"));
                 
@@ -53,69 +58,87 @@ public class ProductService {
                 .status(request.getStatus() != null ? request.getStatus() : Product.Status.ACTIVE)
                 .build();
 
-        return productRepository.save(product);
+        return DtoMapper.toProductResponse(productRepository.save(product));
     }
 
     @Transactional(readOnly = true)
-    public Page<Product> getAllProducts(Long categoryId, Pageable pageable) {
+    public Page<ProductResponse> getAllProducts(Long categoryId, Pageable pageable) {
+        Page<Product> productPage;
         if (categoryId != null) {
-            return productRepository.findByCategory_CategoryId(categoryId, pageable);
+            productPage = productRepository.findByCategory_CategoryId(categoryId, pageable);
+        } else {
+            productPage = productRepository.findAll(pageable);
         }
-        return productRepository.findAll(pageable);
+        return productPage.map(DtoMapper::toProductResponse);
     }
 
+    //  @Transactional(readOnly = true)
+    // // public Page<Product> getAllProducts(Long categoryId, Pageable pageable) {
+    // public Page<ProductResponse> getAllProducts(Long categoryId, Pageable pageable) {
+    //     Page<ProductResponse> productPage;
+    //     if (categoryId != null) {
+    //         // return productRepository.findByCategory_CategoryId(categoryId, pageable);
+    //         productPage = productRepository.findByCategory_CategoryId(categoryId, pageable);
+    //     } else {
+    //         productPage = productRepository.findAll(pageable);
+    //     }
+    //     // return productRepository.findAll(pageable);
+    //     return productPage.map(DtoMapper::toProductResponse);
+    // }
+
+
     @Transactional(readOnly = true)
-    public Product getProductById(Long productId) {
+    public ProductResponse getProductById(Long productId) {
         return productRepository.findById(productId)
+                .map(DtoMapper::toProductResponse)
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + productId));
     }
 
     @Transactional
-    public Product updateProduct(Long productId, ProductUpdateRequest request) {
-        Product existing = getProductById(productId);
+    public ProductResponse updateProduct(Long productId, ProductUpdateRequest request) {
+        Product existing = productRepository.findById(productId)
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + productId));
         
-        // In a real app we would check if the current SecurityContext user owns this product via seller ID
-        // if (!existing.getSeller().getUser().getUserId().equals(currentUser.getId())) throw ForbiddenException(...)
-
         if (request.getName() != null) existing.setName(request.getName());
         if (request.getDescription() != null) existing.setDescription(request.getDescription());
         if (request.getPrice() != null) existing.setPrice(request.getPrice());
         
-        return productRepository.save(existing);
+        return DtoMapper.toProductResponse(productRepository.save(existing));
     }
 
     @Transactional
     public void deleteProduct(Long productId) {
-        Product existing = getProductById(productId);
-        productRepository.delete(existing);
+        ProductResponse existing = getProductById(productId);
+        productRepository.deleteById(existing.getProductId());
     }
 
     @Transactional(readOnly = true)
-    public Page<Product> searchProducts(String keyword, Pageable pageable) {
+    public Page<ProductResponse> searchProducts(String keyword, Pageable pageable) {
         if (keyword == null || keyword.trim().isEmpty()) {
             throw new BadRequestException("Search keyword cannot be empty");
         }
-        return productRepository.findByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(keyword, keyword, pageable);
+        return productRepository.findByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(keyword, keyword, pageable)
+                .map(DtoMapper::toProductResponse);
     }
 
     @Transactional(readOnly = true)
-    public Page<Product> getProductsByCategory(Long categoryId, Pageable pageable) {
+    public Page<ProductResponse> getProductsByCategory(Long categoryId, Pageable pageable) {
         if (!categoryRepository.existsById(categoryId)) {
             throw new ResourceNotFoundException("Category not found with id: " + categoryId);
         }
-        return productRepository.findByCategory_CategoryId(categoryId, pageable);
+        return productRepository.findByCategory_CategoryId(categoryId, pageable)
+                .map(DtoMapper::toProductResponse);
     }
 
     @Transactional
-    public ProductImage uploadProductImage(Long productId, MultipartFile file) {
-        Product product = getProductById(productId);
+    public ProductImageResponse uploadProductImage(Long productId, MultipartFile file) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + productId));
         
         if (file == null || file.isEmpty()) {
             throw new BadRequestException("Image file cannot be empty");
         }
 
-        // Mocking file upload to a cloud bucket / local storage.
-        // In a real scenario we'd stream this file to S3 and get the URL back.
         String originalFilename = file.getOriginalFilename();
         String fakeImageUrl = "https://shopbazar-bucket.s3.region.amazonaws.com/products/" 
                               + productId + "/" + UUID.randomUUID() + "-" + originalFilename;
@@ -125,18 +148,24 @@ public class ProductService {
                 .imageUrl(fakeImageUrl)
                 .build();
 
-        return productImageRepository.save(image);
+        return DtoMapper.toProductImageResponse(productImageRepository.save(image));
     }
 
     @Transactional(readOnly = true)
-    public List<ProductImage> getProductImages(Long productId) {
-        getProductById(productId); // Ensure product exists
-        return productImageRepository.findByProduct_ProductId(productId);
+    public List<ProductImageResponse> getProductImages(Long productId) {
+        if (!productRepository.existsById(productId)) {
+            throw new ResourceNotFoundException("Product not found with id: " + productId);
+        }
+        return productImageRepository.findByProduct_ProductId(productId).stream()
+                .map(DtoMapper::toProductImageResponse)
+                .collect(Collectors.toList());
     }
 
     @Transactional
     public void deleteProductImage(Long productId, Long imageId) {
-        getProductById(productId); // Ensure product exists
+        if (!productRepository.existsById(productId)) {
+            throw new ResourceNotFoundException("Product not found with id: " + productId);
+        }
         
         ProductImage image = productImageRepository.findById(imageId)
                 .orElseThrow(() -> new ResourceNotFoundException("Image not found with id: " + imageId));
@@ -145,28 +174,30 @@ public class ProductService {
             throw new BadRequestException("Image does not belong to the specified product");
         }
 
-        // In a real app we'd also delete the file from the cloud bucket here
         productImageRepository.delete(image);
     }
 
     @Transactional
-    public Product approveProduct(Long productId) {
-        Product product = getProductById(productId);
+    public ProductResponse approveProduct(Long productId) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + productId));
         product.setStatus(Product.Status.ACTIVE);
         product.setBlockReason(null);
-        return productRepository.save(product);
+        return DtoMapper.toProductResponse(productRepository.save(product));
     }
 
     @Transactional
-    public Product blockProduct(Long productId, String reason) {
-        Product product = getProductById(productId);
+    public ProductResponse blockProduct(Long productId, String reason) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found with id: " + productId));
         product.setStatus(Product.Status.BLOCKED);
         product.setBlockReason(reason);
-        return productRepository.save(product);
+        return DtoMapper.toProductResponse(productRepository.save(product));
     }
 
     @Transactional(readOnly = true)
-    public Page<Product> getProductsByStatus(Product.Status status, Pageable pageable) {
-        return productRepository.findByStatus(status, pageable);
+    public Page<ProductResponse> getProductsByStatus(Product.Status status, Pageable pageable) {
+        return productRepository.findByStatus(status, pageable)
+                .map(DtoMapper::toProductResponse);
     }
 }

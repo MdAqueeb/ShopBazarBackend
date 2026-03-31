@@ -3,7 +3,7 @@ package com.shopbazar.shopbazar.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDateTime;
 
 @Entity
@@ -23,6 +23,7 @@ public class OrderStatusHistory {
     @JoinColumn(name = "order_id", nullable = false)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private Order order;
 
     @Column(name = "status", nullable = false)

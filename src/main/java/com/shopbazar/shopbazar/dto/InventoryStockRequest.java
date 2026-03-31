@@ -1,9 +1,11 @@
 package com.shopbazar.shopbazar.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
+import lombok.*;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Schema(description = "Request to update inventory stock level")
 public class InventoryStockRequest {
     @Schema(description = "Quantity to add/remove (not used in current logic, placeholder)", example = "10")

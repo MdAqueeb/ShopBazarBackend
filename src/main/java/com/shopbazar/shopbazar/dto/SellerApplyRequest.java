@@ -1,9 +1,11 @@
 package com.shopbazar.shopbazar.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
+import lombok.*;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor 
 @Schema(description = "Request to apply for a seller account")
 public class SellerApplyRequest {
     @Schema(description = "User ID applying for seller status", example = "1")

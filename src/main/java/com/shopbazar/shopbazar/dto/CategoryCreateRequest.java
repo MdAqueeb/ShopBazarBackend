@@ -1,9 +1,11 @@
 package com.shopbazar.shopbazar.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
+import lombok.*;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Schema(description = "Request to create a new category")
 public class CategoryCreateRequest {
     @Schema(description = "Name of the category", example = "Electronics")

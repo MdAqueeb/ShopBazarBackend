@@ -1,11 +1,14 @@
 package com.shopbazar.shopbazar.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
+import lombok.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Schema(description = "Registration request details")
 public class RegisterRequest {
     @NotBlank

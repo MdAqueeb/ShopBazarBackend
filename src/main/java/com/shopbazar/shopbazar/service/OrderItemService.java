@@ -3,10 +3,12 @@ package com.shopbazar.shopbazar.service;
 import com.shopbazar.shopbazar.dto.OrderItemResponse;
 import com.shopbazar.shopbazar.entity.OrderItem;
 import com.shopbazar.shopbazar.exception.ResourceNotFoundException;
+import com.shopbazar.shopbazar.mapper.DtoMapper;
 import com.shopbazar.shopbazar.repository.OrderItemRepository;
 import com.shopbazar.shopbazar.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -23,7 +25,7 @@ public class OrderItemService {
             throw new ResourceNotFoundException("Order not found with id: " + orderId);
         }
         return orderItemRepository.findByOrder_OrderId(orderId).stream()
-                .map(this::mapToResponse)
+                .map(DtoMapper::toOrderItemResponse)
                 .collect(Collectors.toList());
     }
 
@@ -33,18 +35,9 @@ public class OrderItemService {
         }
         OrderItem orderItem = orderItemRepository.findByOrder_OrderIdAndOrderItemId(orderId, orderItemId)
                 .orElseThrow(() -> new ResourceNotFoundException("OrderItem not found with id: " + orderItemId + " for order: " + orderId));
-        return mapToResponse(orderItem);
+        return DtoMapper.toOrderItemResponse(orderItem);
     }
 
-    private OrderItemResponse mapToResponse(OrderItem item) {
-        return OrderItemResponse.builder()
-                .orderItemId(item.getOrderItemId())
-                .productId(item.getProduct().getProductId())
-                .productName(item.getProduct().getName())
-                .quantity(item.getQuantity())
-                .price(item.getPrice())
-                .build();
-    }
 
     public OrderItem createOrderItem(OrderItem orderItem) {
         return orderItemRepository.save(orderItem);

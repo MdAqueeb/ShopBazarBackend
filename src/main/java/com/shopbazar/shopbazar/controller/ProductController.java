@@ -1,9 +1,9 @@
 package com.shopbazar.shopbazar.controller;
 
 import com.shopbazar.shopbazar.dto.ProductCreateRequest;
+import com.shopbazar.shopbazar.dto.ProductImageResponse;
+import com.shopbazar.shopbazar.dto.ProductResponse;
 import com.shopbazar.shopbazar.dto.ProductUpdateRequest;
-import com.shopbazar.shopbazar.entity.Product;
-import com.shopbazar.shopbazar.entity.ProductImage;
 import com.shopbazar.shopbazar.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -35,9 +35,9 @@ public class ProductController {
             @ApiResponse(responseCode = "400", description = "Invalid product data")
     })
     @PostMapping
-    public ResponseEntity<com.shopbazar.shopbazar.dto.ApiResponse<Product>> createProduct(@RequestBody ProductCreateRequest request) {
-        Product createdProduct = productService.createProduct(request);
-        return new ResponseEntity<>(com.shopbazar.shopbazar.dto.ApiResponse.<Product>builder()
+    public ResponseEntity<com.shopbazar.shopbazar.dto.ApiResponse<ProductResponse>> createProduct(@RequestBody ProductCreateRequest request) {
+        ProductResponse createdProduct = productService.createProduct(request);
+        return new ResponseEntity<>(com.shopbazar.shopbazar.dto.ApiResponse.<ProductResponse>builder()
                 .success(true)
                 .message("Product created successfully")
                 .data(createdProduct)
@@ -50,11 +50,11 @@ public class ProductController {
             @ApiResponse(responseCode = "200", description = "Products retrieved successfully")
     })
     @GetMapping
-    public ResponseEntity<com.shopbazar.shopbazar.dto.ApiResponse<Page<Product>>> getAllProducts(
+    public ResponseEntity<com.shopbazar.shopbazar.dto.ApiResponse<Page<ProductResponse>>> getAllProducts(
             @Parameter(description = "Filter by category ID")
             @RequestParam(required = false) Long categoryId, Pageable pageable) {
-        Page<Product> products = productService.getAllProducts(categoryId, pageable);
-        return ResponseEntity.ok(com.shopbazar.shopbazar.dto.ApiResponse.<Page<Product>>builder()
+        Page<ProductResponse> products = productService.getAllProducts(categoryId, pageable);
+        return ResponseEntity.ok(com.shopbazar.shopbazar.dto.ApiResponse.<Page<ProductResponse>>builder()
                 .success(true)
                 .message("Products retrieved successfully")
                 .data(products)
@@ -68,11 +68,11 @@ public class ProductController {
             @ApiResponse(responseCode = "404", description = "Product not found")
     })
     @GetMapping("/{productId}")
-    public ResponseEntity<com.shopbazar.shopbazar.dto.ApiResponse<Product>> getProductById(
+    public ResponseEntity<com.shopbazar.shopbazar.dto.ApiResponse<ProductResponse>> getProductById(
             @Parameter(description = "ID of the product to retrieve", required = true)
             @PathVariable Long productId) {
-        Product product = productService.getProductById(productId);
-        return ResponseEntity.ok(com.shopbazar.shopbazar.dto.ApiResponse.<Product>builder()
+        ProductResponse product = productService.getProductById(productId);
+        return ResponseEntity.ok(com.shopbazar.shopbazar.dto.ApiResponse.<ProductResponse>builder()
                 .success(true)
                 .message("Product retrieved successfully")
                 .data(product)
@@ -86,11 +86,11 @@ public class ProductController {
             @ApiResponse(responseCode = "404", description = "Product not found")
     })
     @PutMapping("/{productId}")
-    public ResponseEntity<com.shopbazar.shopbazar.dto.ApiResponse<Product>> updateProduct(
+    public ResponseEntity<com.shopbazar.shopbazar.dto.ApiResponse<ProductResponse>> updateProduct(
             @Parameter(description = "ID of the product to update", required = true)
             @PathVariable Long productId, @RequestBody ProductUpdateRequest request) {
-        Product updatedProduct = productService.updateProduct(productId, request);
-        return ResponseEntity.ok(com.shopbazar.shopbazar.dto.ApiResponse.<Product>builder()
+        ProductResponse updatedProduct = productService.updateProduct(productId, request);
+        return ResponseEntity.ok(com.shopbazar.shopbazar.dto.ApiResponse.<ProductResponse>builder()
                 .success(true)
                 .message("Product updated successfully")
                 .data(updatedProduct)
@@ -121,11 +121,11 @@ public class ProductController {
             @ApiResponse(responseCode = "200", description = "Search results retrieved successfully")
     })
     @GetMapping("/search")
-    public ResponseEntity<com.shopbazar.shopbazar.dto.ApiResponse<Page<Product>>> searchProducts(
+    public ResponseEntity<com.shopbazar.shopbazar.dto.ApiResponse<Page<ProductResponse>>> searchProducts(
             @Parameter(description = "Search keyword", required = true)
             @RequestParam String keyword, Pageable pageable) {
-        Page<Product> products = productService.searchProducts(keyword, pageable);
-        return ResponseEntity.ok(com.shopbazar.shopbazar.dto.ApiResponse.<Page<Product>>builder()
+        Page<ProductResponse> products = productService.searchProducts(keyword, pageable);
+        return ResponseEntity.ok(com.shopbazar.shopbazar.dto.ApiResponse.<Page<ProductResponse>>builder()
                 .success(true)
                 .message("Products searched successfully")
                 .data(products)
@@ -139,11 +139,11 @@ public class ProductController {
             @ApiResponse(responseCode = "404", description = "Category not found")
     })
     @GetMapping("/category/{categoryId}")
-    public ResponseEntity<com.shopbazar.shopbazar.dto.ApiResponse<Page<Product>>> getProductsByCategory(
+    public ResponseEntity<com.shopbazar.shopbazar.dto.ApiResponse<Page<ProductResponse>>> getProductsByCategory(
             @Parameter(description = "ID of the category", required = true)
             @PathVariable Long categoryId, Pageable pageable) {
-        Page<Product> products = productService.getProductsByCategory(categoryId, pageable);
-        return ResponseEntity.ok(com.shopbazar.shopbazar.dto.ApiResponse.<Page<Product>>builder()
+        Page<ProductResponse> products = productService.getProductsByCategory(categoryId, pageable);
+        return ResponseEntity.ok(com.shopbazar.shopbazar.dto.ApiResponse.<Page<ProductResponse>>builder()
                 .success(true)
                 .message("Category products retrieved successfully")
                 .data(products)
@@ -157,13 +157,13 @@ public class ProductController {
             @ApiResponse(responseCode = "404", description = "Product not found")
     })
     @PostMapping("/{productId}/images")
-    public ResponseEntity<com.shopbazar.shopbazar.dto.ApiResponse<ProductImage>> uploadProductImage(
+    public ResponseEntity<com.shopbazar.shopbazar.dto.ApiResponse<ProductImageResponse>> uploadProductImage(
             @Parameter(description = "ID of the product", required = true)
             @PathVariable Long productId,
             @Parameter(description = "Image file to upload", required = true)
             @RequestParam("file") MultipartFile file) {
-        ProductImage uploadedImage = productService.uploadProductImage(productId, file);
-        return new ResponseEntity<>(com.shopbazar.shopbazar.dto.ApiResponse.<ProductImage>builder()
+        ProductImageResponse uploadedImage = productService.uploadProductImage(productId, file);
+        return new ResponseEntity<>(com.shopbazar.shopbazar.dto.ApiResponse.<ProductImageResponse>builder()
                 .success(true)
                 .message("Product image uploaded successfully")
                 .data(uploadedImage)
@@ -177,11 +177,11 @@ public class ProductController {
             @ApiResponse(responseCode = "404", description = "Product not found")
     })
     @GetMapping("/{productId}/images")
-    public ResponseEntity<com.shopbazar.shopbazar.dto.ApiResponse<List<ProductImage>>> getProductImages(
+    public ResponseEntity<com.shopbazar.shopbazar.dto.ApiResponse<List<ProductImageResponse>>> getProductImages(
             @Parameter(description = "ID of the product", required = true)
             @PathVariable Long productId) {
-        List<ProductImage> images = productService.getProductImages(productId);
-        return ResponseEntity.ok(com.shopbazar.shopbazar.dto.ApiResponse.<List<ProductImage>>builder()
+        List<ProductImageResponse> images = productService.getProductImages(productId);
+        return ResponseEntity.ok(com.shopbazar.shopbazar.dto.ApiResponse.<List<ProductImageResponse>>builder()
                 .success(true)
                 .message("Product images retrieved successfully")
                 .data(images)

@@ -1,9 +1,11 @@
 package com.shopbazar.shopbazar.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
+import lombok.*;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Schema(description = "Request to add or update an item in the cart")
 public class CartItemRequest {
     @Schema(description = "Product ID", example = "1")

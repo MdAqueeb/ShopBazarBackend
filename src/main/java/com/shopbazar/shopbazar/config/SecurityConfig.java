@@ -49,7 +49,7 @@ public class SecurityConfig {
                         .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/search/**").permitAll()
                         .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/products/*/reviews").permitAll()
                         .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/products/*/ratings").permitAll()
-                        
+                        // .requestMatchers(org.springframework.http.HttpMethod.GET, "/api/users/**").permitAll()
                         // Swagger/OpenAPI documentation
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/swagger-resources/**", "/webjars/**").permitAll()
 
@@ -75,6 +75,7 @@ public class SecurityConfig {
                         .requestMatchers(org.springframework.http.HttpMethod.DELETE, "/api/products/*/reviews").hasAnyRole("CUSTOMER", "ADMIN")
                         .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/products/*/ratings").hasAnyRole("CUSTOMER", "ADMIN")
 
+                
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(exception -> exception

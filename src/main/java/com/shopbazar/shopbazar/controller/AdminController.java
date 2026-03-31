@@ -119,10 +119,11 @@ public class AdminController {
             @ApiResponse(responseCode = "200", description = "Products retrieved successfully")
     })
     @GetMapping("/products")
-    public ResponseEntity<Page<Product>> getAllProducts(
+    public ResponseEntity<Page<ProductResponse>> getAllProducts(
             @Parameter(description = "Filter by product status")
             @RequestParam(required = false) Product.Status status,
             Pageable pageable) {
+                
         if (status != null) {
             return ResponseEntity.ok(productService.getProductsByStatus(status, pageable));
         }
@@ -135,7 +136,7 @@ public class AdminController {
             @ApiResponse(responseCode = "404", description = "Product not found")
     })
     @PutMapping("/products/{productId}/approve")
-    public ResponseEntity<Product> approveProduct(
+    public ResponseEntity<ProductResponse> approveProduct(
             @Parameter(description = "ID of the product to approve", required = true)
             @PathVariable Long productId) {
         return ResponseEntity.ok(productService.approveProduct(productId));
@@ -147,7 +148,7 @@ public class AdminController {
             @ApiResponse(responseCode = "404", description = "Product not found")
     })
     @PutMapping("/products/{productId}/block")
-    public ResponseEntity<Product> blockProduct(
+    public ResponseEntity<ProductResponse> blockProduct(
             @Parameter(description = "ID of the product to block", required = true)
             @PathVariable Long productId, @RequestBody BlockRequest request) {
         return ResponseEntity.ok(productService.blockProduct(productId, request.getReason()));

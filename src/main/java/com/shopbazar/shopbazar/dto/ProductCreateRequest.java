@@ -2,10 +2,12 @@ package com.shopbazar.shopbazar.dto;
 
 import com.shopbazar.shopbazar.entity.Product;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
+import lombok.*;
 import java.math.BigDecimal;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Schema(description = "Request to create a new product")
 public class ProductCreateRequest {
     @Schema(description = "Seller ID", example = "1")

@@ -3,7 +3,7 @@ package com.shopbazar.shopbazar.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "roles")
 @Data
@@ -30,6 +30,7 @@ public class Role {
 
     @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
     @ToString.Exclude
+    @JsonIgnore
     @EqualsAndHashCode.Exclude
     private List<User> users;
 }

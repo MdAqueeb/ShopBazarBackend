@@ -1,5 +1,6 @@
 package com.shopbazar.shopbazar.repository;
 
+import com.shopbazar.shopbazar.dto.ProductResponse;
 import com.shopbazar.shopbazar.entity.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,9 +1,11 @@
 package com.shopbazar.shopbazar.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Data;
+import lombok.*;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor  
 @Schema(description = "Request to update seller profile")
 public class SellerUpdateRequest {
     @Schema(description = "New store name", example = "Aqueeb's Gadgets")

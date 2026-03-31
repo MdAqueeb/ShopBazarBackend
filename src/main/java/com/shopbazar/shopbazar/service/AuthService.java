@@ -4,10 +4,8 @@ import com.shopbazar.shopbazar.dto.*;
 import com.shopbazar.shopbazar.entity.RefreshToken;
 import com.shopbazar.shopbazar.entity.Role;
 import com.shopbazar.shopbazar.entity.User;
-import com.shopbazar.shopbazar.exception.BadRequestException;
-import com.shopbazar.shopbazar.exception.ConflictException;
-import com.shopbazar.shopbazar.exception.ResourceNotFoundException;
-import com.shopbazar.shopbazar.exception.UnauthorizedException;
+import com.shopbazar.shopbazar.exception.*;
+import com.shopbazar.shopbazar.mapper.DtoMapper;
 import com.shopbazar.shopbazar.repository.RefreshTokenRepository;
 import com.shopbazar.shopbazar.repository.RoleRepository;
 import com.shopbazar.shopbazar.repository.UserRepository;
@@ -59,6 +57,7 @@ public class AuthService {
         // In a real app, send verification email here
     }
 
+    @Transactional
     public AuthResponse login(LoginRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
@@ -83,14 +82,15 @@ public class AuthService {
         return AuthResponse.builder()
                 .accessToken(accessToken)
                 .refreshToken(refreshToken)
-                .userId(user.getUserId())
-                .email(user.getEmail())
-                .role(user.getRole().getRoleName().name())
+                .tokenType("Bearer")
+                .expiresIn(3600L) // Typically 1 hour
+                .user(DtoMapper.toUserResponse(user))
                 .build();
     }
 
     @Transactional
     public AuthResponse refreshToken(RefreshTokenRequest request) {
+        
         return refreshTokenRepository.findByToken(request.getRefreshToken())
                 .map(this::verifyExpiration)
                 .map(RefreshToken::getUser)
@@ -105,9 +105,9 @@ public class AuthService {
                     return AuthResponse.builder()
                             .accessToken(accessToken)
                             .refreshToken(request.getRefreshToken())
-                            .userId(user.getUserId())
-                            .email(user.getEmail())
-                            .role(user.getRole().getRoleName().name())
+                            .tokenType("Bearer")
+                            .expiresIn(3600L)
+                            .user(DtoMapper.toUserResponse(user))
                             .build();
                 })
                 .orElseThrow(() -> new BadRequestException("Invalid or expired refresh token"));
@@ -156,6 +156,7 @@ public class AuthService {
 
     private RefreshToken createRefreshToken(User user) {
         refreshTokenRepository.deleteByUser(user);
+        refreshTokenRepository.flush();
         RefreshToken refreshToken = RefreshToken.builder()
                 .user(user)
                 .token(UUID.randomUUID().toString())

@@ -3,7 +3,7 @@ package com.shopbazar.shopbazar.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "sellers")
 @Data
@@ -52,10 +52,12 @@ public class Seller {
     @OneToMany(mappedBy = "seller", fetch = FetchType.LAZY)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private List<Product> products;
 
     @OneToMany(mappedBy = "seller", fetch = FetchType.LAZY)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private List<OrderItem> orderItems;
 }
